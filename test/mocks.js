@@ -6,6 +6,7 @@ function noop () {}
 const firstName = 'First';
 const firstConfig = {
   schema: {
+    _id: Number,
     first: Boolean
   },
   index: {},
@@ -30,6 +31,7 @@ const firstConfig = {
 const secondName = 'Second';
 const secondConfig = {
   schema: {
+    _id: Number,
     second: Boolean
   }
 };

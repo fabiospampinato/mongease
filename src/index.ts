@@ -163,7 +163,10 @@ const Mongease = {
 
       Mongease.setConfig ( name, plain );
 
-      const Schema = new mongoose.Schema ( schema, plain['options'] );
+      const options = plain['options'],
+            needsId = !schema.hasOwnProperty ( '_id' ) && ( !options || options._id !== false ),
+            newSchema = needsId ? _.extend ( {}, schema, { _id: mongoose.Schema.Types.ObjectId } ) : schema,
+            Schema = new mongoose.Schema ( newSchema, options );
 
       return Mongease.setSchema ( name, Schema );
 

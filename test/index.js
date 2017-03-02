@@ -317,6 +317,42 @@ describe ( 'Mongease', it => {
 
     });
 
+    it ( 'Adds an `_id` field to the schema by default', t => {
+
+      let name = 'TestName',
+          config = _.cloneDeep ( firstConfig );
+
+      delete config.schema._id;
+
+      t.context.M.make ( name, config );
+
+      t.not ( t.context.M.getSchema ( name ).obj._id, undefined );
+
+    });
+
+    it ( 'Doesn\'t add an `_id` field to the schema if there\'s one', t => {
+
+      t.is ( t.context.M.getSchema ( firstName ).obj._id, firstConfig.schema._id );
+
+    });
+
+    it ( 'Doesn\'t add an `_id` field to the schema if the relevant option is set to false', t => {
+
+      let name = 'TestName',
+          config = _.cloneDeep ( firstConfig );
+
+      config.options = {
+        _id: false
+      };
+
+      delete config.schema._id;
+
+      t.context.M.make ( name, config );
+
+      t.is ( t.context.M.getSchema ( name ).obj._id, undefined );
+
+    });
+
     it.todo ( 'Sets the indexes' );
 
     it.todo ( 'Sets the plugins' );
