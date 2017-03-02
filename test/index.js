@@ -4,7 +4,7 @@
 import * as _ from 'lodash';
 import {describe} from 'ava-spec';
 import callSpy from 'call-spy';
-import Mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import Mongease from '../dist';
 import {noop, firstName, firstConfig, secondName, secondConfig} from './mocks';
 
@@ -14,8 +14,8 @@ describe ( 'Mongease', it => {
 
   it.beforeEach ( t => {
 
-    Mongoose.models = {};
-    Mongoose.modelSchemas = {};
+    mongoose.models = {};
+    mongoose.modelSchemas = {};
     Mongease.reset ();
 
     t.context.M = _.cloneDeep ( Mongease );
@@ -177,7 +177,7 @@ describe ( 'Mongease', it => {
 
     it ( 'Sets a component\'s schema', t => {
 
-      const schema = new Mongoose.Schema ({});
+      const schema = new mongoose.Schema ({});
 
       t.context.M.setSchema ( firstName, schema );
 
@@ -191,8 +191,8 @@ describe ( 'Mongease', it => {
 
     it ( 'Sets a component\'s model', t => {
 
-      const schema = new Mongoose.Schema ({}),
-            model = Mongoose.model ( '__test__', schema );
+      const schema = new mongoose.Schema ({}),
+            model = mongoose.model ( '__test__', schema );
 
       t.context.M.setModel ( firstName, model );
 
@@ -303,7 +303,7 @@ describe ( 'Mongease', it => {
       for ( let result of results ) {
 
         t.true ( result.called );
-        t.deepEqual ( result.args, [name, config] );
+        t.deepEqual ( result.arguments, [name, config] );
 
       }
 
