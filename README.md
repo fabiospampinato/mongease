@@ -97,6 +97,12 @@ Adds a plugin, or an array of plugins, to the list of those that will be called 
 
 Creates a schema and a model and returns them. It also calls each registered plugin with the same arguments.
 
+## Related
+
+- [mongoose-to-graphql](https://github.com/fabiospampinato/mongoose-to-graphql) - Converts a Mongoose schema to its GraphQL representation.
+- [mongease-graphql](https://github.com/fabiospampinato/mongease-graphql) - Mongease plugin for adding support to GraphQL schemas creation.
+- [mongease-graphql-builder](https://github.com/fabiospampinato/mongease-graphql-builder) - Module for auto-generating simple GraphQL queries from Mongease descriptions.
+
 ## License
 
 MIT © Fabio Spampinato
