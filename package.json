@@ -1,6 +1,6 @@
 {
   "name": "mongease",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tiny wrapper around Mongoose for easier creation of schemas and models. Supports plugins.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
