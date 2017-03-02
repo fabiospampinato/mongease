@@ -41,9 +41,9 @@
     "plugins"
   ],
   "dependencies": {
-    "@types/lodash": "^4.14.52",
+    "@types/lodash": "^4.14.54",
     "lodash": "^4.17.4",
-    "mongoose": "^4.8.4"
+    "mongoose": "^4.8.5"
   },
   "devDependencies": {
     "ava": "^0.18.2",
