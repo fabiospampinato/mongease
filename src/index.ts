@@ -51,7 +51,7 @@ const Mongease = {
 
     const Schema = Mongease.get ( name, 'schema' );
 
-    if ( !(Schema instanceof mongoose.Schema) ) throw new Error ( '[mongease] Schema not found' );
+    if ( !Schema ) throw new Error ( '[mongease] Schema not found' );
 
     return Schema;
 
