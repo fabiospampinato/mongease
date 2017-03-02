@@ -252,8 +252,20 @@ const Mongease = {
 
     model ( name: string ): Function {
 
-      const Schema = Mongease.getSchema ( name ),
-            Model = mongoose.model ( name, Schema );
+      let Model;
+
+      if ( !mongoose.model ) { // Running in the browser
+
+        Model = function () {};
+        Model['modelName'] = name; // For better compatibility
+
+      } else {
+
+        const Schema = Mongease.getSchema ( name );
+
+        Model = mongoose.model ( name, Schema );
+
+      }
 
       return Mongease.setModel ( name, Model );
 
