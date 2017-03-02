@@ -41,13 +41,14 @@
     "plugins"
   ],
   "dependencies": {
+    "@types/lodash": "^4.14.52",
+    "lodash": "^4.17.4",
     "mongoose": "^4.8.4"
   },
   "devDependencies": {
     "ava": "^0.18.2",
     "ava-spec": "^1.1.0",
     "call-spy": "^1.0.0",
-    "lodash": "^4.17.4",
     "nyc": "^10.1.2",
     "rimraf": "^2.6.0",
     "tslint": "^4.4.2",
