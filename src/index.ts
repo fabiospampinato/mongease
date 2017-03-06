@@ -86,7 +86,9 @@ const Mongease = {
 
     }
 
-    return _.set ( Mongease._parsed, _.isUndefined ( sub ) ? name : [name, sub], value );
+    _.set ( Mongease._parsed, _.isUndefined ( sub ) ? name : [name, sub], value );
+
+    return value;
 
   },
 

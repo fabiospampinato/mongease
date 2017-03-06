@@ -159,6 +159,12 @@ describe ( 'Mongease', it => {
 
     });
 
+    it ( 'Returns the setted value', t => {
+
+      t.true ( t.context.M.set ( true ) );
+
+    });
+
   });
 
   describe ( 'setConfig', it => {
@@ -168,6 +174,12 @@ describe ( 'Mongease', it => {
       t.context.M.setConfig ( firstName, true );
 
       t.true ( t.context.M.getConfig ( firstName ) );
+
+    });
+
+    it ( 'Returns the setted configuration', t => {
+
+      t.true ( t.context.M.setConfig ( firstName, true ) );
 
     });
 
@@ -185,6 +197,14 @@ describe ( 'Mongease', it => {
 
     });
 
+    it ( 'Returns the setted schema', t => {
+
+      const schema = new mongoose.Schema ({});
+
+      t.is ( t.context.M.setSchema ( firstName, schema ), schema );
+
+    });
+
   });
 
   describe ( 'setModel', it => {
@@ -197,6 +217,15 @@ describe ( 'Mongease', it => {
       t.context.M.setModel ( firstName, model );
 
       t.is ( t.context.M.getModel ( firstName ), model );
+
+    });
+
+    it ( 'Returns the setted model', t => {
+
+      const schema = new mongoose.Schema ({}),
+            model = mongoose.model ( '__test__', schema );
+
+      t.is ( t.context.M.setModel ( firstName, model ), model );
 
     });
 
