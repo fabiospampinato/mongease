@@ -57,13 +57,13 @@ const Mongease = {
 
   },
 
-  getModels (): Function[] {
+  getModels (): any[] {
 
     return Mongease.get ( undefined, 'model' );
 
   },
 
-  getModel ( name: string ): Function {
+  getModel ( name: string ): any {
 
     const model = Mongease.get ( name, 'model' );
 
@@ -104,7 +104,7 @@ const Mongease = {
 
   },
 
-  setModel ( name: string, model: Function ): Function {
+  setModel ( name: string, model: Function ): any {
 
     return Mongease.set ( name, 'model', model );
 
@@ -132,7 +132,7 @@ const Mongease = {
 
   /* MAKE */
 
-  make ( name: string, config: {} ): { schema: mongoose.Schema, model: Function } {
+  make ( name: string, config: {} ): { schema: mongoose.Schema, model: any } {
 
     if ( !config.hasOwnProperty ( 'schema' ) ) throw new Error ( '[mongease] The configuration must provide a schema' );
 
@@ -254,7 +254,7 @@ const Mongease = {
 
     },
 
-    model ( name: string ): Function {
+    model ( name: string ): any {
 
       let Model;
 
