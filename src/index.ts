@@ -168,7 +168,7 @@ const Mongease = {
       const options = plain['options'],
             needsId = !schema.hasOwnProperty ( '_id' ) && ( !options || options._id !== false );
 
-      if ( needsId ) _.extend ( schema, { _id: mongoose.Schema.Types.ObjectId } );
+      if ( needsId ) _.extend ( schema, { _id: { type: mongoose.Schema.Types.ObjectId, default: () => new mongoose.Types.ObjectId () } } );
 
       const Schema = new mongoose.Schema ( schema, options );
 
