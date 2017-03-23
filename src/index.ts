@@ -256,16 +256,20 @@ const Mongease = {
 
     model ( name: string ): any {
 
+      const Schema = Mongease.getSchema ( name );
+
       let Model;
 
-      if ( !mongoose.model ) { // Running in the browser
+      if ( !mongoose.model ) { // Running in the browser, ensuring some degree of compatibility
 
         Model = function () {};
-        Model['modelName'] = name; // For better compatibility
+        Model['modelName'] = name;
+
+        const config = Mongease.getConfig ( name );
+
+        _.extend ( Model, config['statics'] );
 
       } else {
-
-        const Schema = Mongease.getSchema ( name );
 
         Model = mongoose.model ( name, Schema );
 
