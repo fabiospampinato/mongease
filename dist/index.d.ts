@@ -6,17 +6,17 @@ declare const Mongease: {
     getConfig(name: string): {};
     getSchemas(): any[];
     getSchema(name: string): any;
-    getModels(): Function[];
-    getModel(name: string): Function;
+    getModels(): any[];
+    getModel(name: string): any;
     set(name: any, sub?: any, value?: any): any;
     setConfig(name: string, config: {}): {};
     setSchema(name: string, Schema: any): any;
-    setModel(name: string, model: Function): Function;
+    setModel(name: string, model: Function): any;
     reset(): any;
     plugin(plugin: Function | Function[]): any;
     make(name: string, config: {}): {
         schema: any;
-        model: Function;
+        model: any;
     };
     makers: {
         order: string[];
@@ -27,7 +27,7 @@ declare const Mongease: {
         statics(name: string, statics: {}): any;
         methods(name: string, methods: {}): any;
         virtuals(name: string, virtuals: {}): any;
-        model(name: string): Function;
+        model(name: string): any;
     };
 };
 export default Mongease;
