@@ -6,6 +6,12 @@ import * as mongoose from 'mongoose';
 
 /* MONGEASE */
 
+//TODO: Auto creation of resolvers from methods (probably requires a babel transform)
+//TODO: add support for all the missing abilities of plain mongoose decorators
+//      - hooks
+//      - get properties added by plugins
+//      - model.discriminator
+
 const Mongease = {
 
   /* VARIABLES */
