@@ -1,8 +1,5 @@
 # Mongease
 
-![Issues](https://img.shields.io/github/issues/fabiospampinato/mongease.svg)
-[![NPM version](https://img.shields.io/npm/v/mongease.svg)](https://www.npmjs.com/package/mongease)
-
 Tiny wrapper around Mongoose for easier creation of schemas and models. Supports plugins.
 
 ## Install
