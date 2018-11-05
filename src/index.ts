@@ -291,4 +291,4 @@ const Mongease = {
 
 /* EXPORT */
 
-export default Mongease;
+export = Object.assign ( Mongease, { default: Mongease } );
