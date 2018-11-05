@@ -1,7 +1,13 @@
 
 /* IMPORT */
 
-import * as _ from 'lodash';
+import castArray = require ( 'lodash/castArray' );
+import extend = require ( 'lodash/extend' );
+import get = require ( 'lodash/get' );
+import isFunction = require ( 'lodash/isFunction' );
+import isUndefined = require ( 'lodash/isUndefined' );
+import map = require ( 'lodash/map' );
+import set = require ( 'lodash/set' );
 import * as mongoose from 'mongoose';
 
 /* MONGEASE */
@@ -23,9 +29,9 @@ const Mongease = {
 
   get ( name?: string, sub?: string ): any {
 
-    if ( name ) return _.get ( Mongease._parsed, sub ? [name, sub] : name );
+    if ( name ) return get ( Mongease._parsed, sub ? [name, sub] : name );
 
-    if ( sub ) return _.map ( Mongease._parsed, sub );
+    if ( sub ) return map ( Mongease._parsed, sub );
 
     return Mongease._parsed;
 
@@ -73,7 +79,7 @@ const Mongease = {
 
     const model = Mongease.get ( name, 'model' );
 
-    if ( !_.isFunction ( model ) ) throw new Error ( '[mongease] Model not found' );
+    if ( !isFunction ( model ) ) throw new Error ( '[mongease] Model not found' );
 
     return model;
 
@@ -85,14 +91,14 @@ const Mongease = {
 
     if ( !sub ) return Mongease._parsed = name;
 
-    if ( _.isUndefined ( value ) ) {
+    if ( isUndefined ( value ) ) {
 
       value = sub;
       sub = undefined;
 
     }
 
-    _.set ( Mongease._parsed, _.isUndefined ( sub ) ? name : [name, sub], value );
+    set ( Mongease._parsed, isUndefined ( sub ) ? name : [name, sub], value );
 
     return value;
 
@@ -130,7 +136,7 @@ const Mongease = {
 
   plugin ( plugin: Function | Function[] ) {
 
-    Mongease._plugins = Mongease._plugins.concat ( _.castArray ( plugin ) );
+    Mongease._plugins = Mongease._plugins.concat ( castArray ( plugin ) );
 
     return Mongease;
 
@@ -174,7 +180,7 @@ const Mongease = {
       const options = plain['options'],
             needsId = !schema.hasOwnProperty ( '_id' ) && ( !options || options._id !== false );
 
-      if ( needsId ) _.extend ( schema, { _id: { type: mongoose.Schema.Types.ObjectId, default: () => new mongoose.Types.ObjectId () } } );
+      if ( needsId ) extend ( schema, { _id: { type: mongoose.Schema.Types.ObjectId, default: () => new mongoose.Types.ObjectId () } } );
 
       const Schema = new mongoose.Schema ( schema, options );
 
@@ -198,7 +204,7 @@ const Mongease = {
 
       for ( let plugin of plugins ) {
 
-        plugin = _.castArray ( plugin );
+        plugin = castArray ( plugin );
 
         Schema.plugin ( plugin[0], plugin[1] );
 
@@ -212,7 +218,7 @@ const Mongease = {
 
       const Schema = Mongease.getSchema ( name );
 
-      _.extend ( Schema['query'], queries );
+      extend ( Schema['query'], queries );
 
       return Schema;
 
@@ -222,7 +228,7 @@ const Mongease = {
 
       const Schema = Mongease.getSchema ( name );
 
-      _.extend ( Schema.statics, statics );
+      extend ( Schema.statics, statics );
 
       return Schema;
 
@@ -232,7 +238,7 @@ const Mongease = {
 
       const Schema = Mongease.getSchema ( name );
 
-      _.extend ( Schema.methods, methods );
+      extend ( Schema.methods, methods );
 
       return Schema;
 
@@ -273,7 +279,7 @@ const Mongease = {
 
         const config = Mongease.getConfig ( name );
 
-        _.extend ( Model, config['statics'] );
+        extend ( Model, config['statics'] );
 
       } else {
 
